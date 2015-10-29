@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">Pizza Service</string>
+    <string name="tv_pizza_info">The world\'s best pizza service!</string>
+    <string name="tv_delivery_info">Delivery address</string>
+    <string name="et_street_number">Input street and number</string>
+
+
+    <string-array name="list_view_entries">
+        <item android:id="@+id/lvi_salami">Salami</item>
+        <item android:id="@+id/lvi_tonno">Tonno</item>
+        <item android:id="@+id/lvi_margherita">Margherita</item>
+    </string-array>
+
+    <!--Context Menu -->
+    <string name="cm_add">Add</string>
+    <string name="cm_delete">Delete</string>
+    <string name="cm_edit">Edit</string>
+</resources>

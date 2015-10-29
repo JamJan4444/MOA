@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      android:title="@string/cm_title"
+
+      android:id="@+id/cm">
+    <item
+            android:id="@+id/cm_start"
+            android:title="@string/cm_title_start"/>
+    <item
+            android:id="@+id/cm_webpage"
+            android:title="@string/cm_title_webpage"/>
+</menu>

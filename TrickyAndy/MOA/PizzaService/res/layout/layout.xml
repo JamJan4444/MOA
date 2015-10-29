@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_pizza_info"
+            android:id="@+id/tv_pizza_info"
+            />
+
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@android:id/list"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:entries="@array/list_view_entries"
+              android:layout_below="@+id/tv_pizza_info"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/tv_delivery_info"
+              android:id="@+id/tv_delivery_info"
+              android:layout_below="@android:id/list"
+            />
+
+    <EditText android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:hint="@string/et_street_number"
+              android:id="@+id/et_street_number"
+              android:layout_below="@id/tv_delivery_info"
+            />
+
+</RelativeLayout>

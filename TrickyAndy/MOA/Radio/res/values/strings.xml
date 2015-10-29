@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Radio</string>
+    <string name="cm_title">Context Menu</string>
+    <string name="cm_title_start" >Start Radio</string>
+    <string name="cm_title_webpage" >Open Radio Webpage</string>
+
+    <string name="om_title_exit">Exit</string>
+    <string name="om_title_options">Options</string>
+
+    <string-array name="radio_listView_entries">
+        <item>1Live</item>
+        <item>dradio</item>
+        <item>Radiowax</item>
+        <item>Stop player</item>
+        <item>Exit*</item>
+    </string-array>
+
+</resources>

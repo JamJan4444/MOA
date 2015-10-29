@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/cm">
+
+    <item android:id="@+id/cm_add" android:title="@string/cm_add" android:icon="@android:drawable/ic_menu_add" android:showAsAction="always"/>
+    <item android:id="@+id/cm_delete" android:title="@string/cm_delete" android:icon="@android:drawable/ic_menu_delete" android:showAsAction="always"/>
+    <item android:id="@+id/cm_edit" android:title="@string/cm_edit" android:icon="@android:drawable/ic_menu_edit" android:showAsAction="always"/>
+</menu>
