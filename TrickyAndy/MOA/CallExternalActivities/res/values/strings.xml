@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="app_name">CallExternalActivities</string>
+
+    <string-array name="list_view_entries">
+        <item android:id="@+id/lvi_browser">Browser</item>
+        <item android:id="@+id/lvi_search_campus_bocholt">Search Campus Bocholt</item>
+        <item android:id="@+id/lvi_dial">Dial</item>
+        <item android:id="@+id/lvi_call">Call</item>
+        <item android:id="@+id/lvi_bocholt_map">Bocholt Map</item>
+        <item android:id="@+id/lvi_radio">Radio</item>
+        <item android:id="@+id/lvi_exit">Exit</item>
+        <item android:id="@+id/lvi_home">Home</item>
+    </string-array>
+
+    <!--Context Menu -->
+    <string name="cm_add">Add</string>
+    <string name="cm_delete">Delete</string>
+    <string name="cm_edit">Edit</string>
+
+</resources>
