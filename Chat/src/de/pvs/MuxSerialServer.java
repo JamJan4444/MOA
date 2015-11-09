@@ -78,7 +78,8 @@ public class MuxSerialServer {
 
             }
             Object object = chat.processMessage(talkChan, s);
-            for(SocketChannel s : object.channels)
+            
+            for(SocketChannel s:object.channels)
             {
                 ChannelRW.sendTextMessage(s, object.nachricht);
             }

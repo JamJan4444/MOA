@@ -1,5 +1,6 @@
 package de.pvs;
 
+import java.nio.channels.Channel;
 import java.nio.channels.SocketChannel;
 import java.util.HashMap;
 
@@ -8,16 +9,16 @@ import java.util.HashMap;
  */
 public class Chat {
 
-    HashMap<?,?> benutzerliste;
+    HashMap<Channel,String> _user = null;
 
     public Chat()
     {
-        // TODO Construct
+        _user = new HashMap<Channel,String>();
     }
 
-    public void login()
+    public void login(Channel c, String name)
     {
-        // TODO login + add user
+        _user.put(c,name);
     }
 
     public void logout()
@@ -27,7 +28,6 @@ public class Chat {
 
     public Object processMessage(SocketChannel sc, String message)
     {
-
         return null;
     }
 }
