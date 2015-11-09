@@ -4,6 +4,7 @@ import java.nio.channels.Channel;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Andrej on 09.11.2015.
@@ -11,7 +12,7 @@ import java.util.HashMap;
 public class Chat {
 
 
-    HashMap<Channel,String> _user = null;
+    HashMap<SocketChannel,String> _userlist = null;
     ArrayList<SocketChannel> _channelsToNotify;
     String _notifyMessage;
 
@@ -35,17 +36,45 @@ public class Chat {
 
     public Chat()
     {
-        _user = new HashMap<Channel,String>();
+        _userlist = new HashMap<SocketChannel,String>();
     }
 
-    public void login(Channel c, String name)
+    public void login(SocketChannel c, String name)
     {
-        _user.put(c,name);
+        _userlist.put(c,name);
+        
+        ArrayList<SocketChannel> list = new ArrayList<SocketChannel>(_userlist.keySet());
+        list.remove(c);
+        
+        this.set_notifyMessage("/userjoined " + name);
+        this.set_channelsToNotify(list);
     }
 
-    public void logout()
+    public void logout(Channel c)
     {
-        // TODO logout + remove user
+    	String name = _userlist.get(c);
+        _userlist.remove(c);
+        
+        ArrayList<SocketChannel> list = new ArrayList<SocketChannel>(_userlist.keySet());
+        
+        this.set_notifyMessage("/userleft " + name);
+        this.set_channelsToNotify(list);
+    }
+    
+    public void getUserList(SocketChannel c){
+    	StringBuilder sb = new StringBuilder();
+    	
+    	//Build User List
+    	sb.append("/userlist ");
+    	for(Map.Entry<SocketChannel, String> entry :_userlist.entrySet()){
+    		sb.append(entry.getValue() + " | ");
+    	}
+    	
+    	ArrayList<SocketChannel> sc = new ArrayList<SocketChannel>();
+    	sc.add(c);
+    	
+    	this.set_notifyMessage(sb.toString());
+    	this.set_channelsToNotify(sc);
     }
 
     public void processMessage(SocketChannel sc, String message)
