@@ -12,11 +12,19 @@ import java.util.Map;
  */
 public class Chat {
 
-    HashMap<SocketChannel,String> _userlist = null;
+    HashMap<SocketChannel,String> _userList = null;
     ArrayList<SocketChannel> _channelsToNotify;
     String _notifyMessage;
 
     //<editor-fold desc="Getter Setter">
+    public HashMap<SocketChannel, String> get_userList() {
+        return _userList;
+    }
+
+    public void set_userList(HashMap<SocketChannel, String> _userList) {
+        this._userList = _userList;
+    }
+
     public ArrayList<SocketChannel> get_channelsToNotify() {
         return _channelsToNotify;
     }
@@ -36,14 +44,14 @@ public class Chat {
 
     public Chat()
     {
-        _userlist = new HashMap<SocketChannel,String>();
+        _userList = new HashMap<SocketChannel,String>();
     }
 
     public void login(SocketChannel c, String name)
     {
-        _userlist.put(c,name);
+        get_userList().put(c, name);
         
-        ArrayList<SocketChannel> list = new ArrayList<SocketChannel>(_userlist.keySet());
+        ArrayList<SocketChannel> list = new ArrayList<SocketChannel>(get_userList().keySet());
         list.remove(c);
         
         this.set_notifyMessage("/userjoined " + name);
@@ -52,10 +60,10 @@ public class Chat {
 
     public void logout(Channel c)
     {
-    	String name = _userlist.get(c);
-        _userlist.remove(c);
+    	String name = get_userList().get(c);
+        get_userList().remove(c);
         
-        ArrayList<SocketChannel> list = new ArrayList<SocketChannel>(_userlist.keySet());
+        ArrayList<SocketChannel> list = new ArrayList<SocketChannel>(get_userList().keySet());
         
         this.set_notifyMessage("/userleft " + name);
         this.set_channelsToNotify(list);
@@ -66,7 +74,7 @@ public class Chat {
     	
     	//Build User List
     	sb.append("/userlist ");
-    	for(Map.Entry<SocketChannel, String> entry :_userlist.entrySet()){
+    	for(Map.Entry<SocketChannel, String> entry :get_userList().entrySet()){
     		sb.append(entry.getValue() + " | ");
     	}
     	
@@ -79,8 +87,8 @@ public class Chat {
 
     public void messageForUsers(SocketChannel sc, String message)
     {
-        this.set_notifyMessage(this._user.get(sc) + ": " + message);
-        this.set_channelsToNotify(new ArrayList<>(this._user.keySet()));
+        this.set_notifyMessage(this.get_userList().get(sc) + ": " + message);
+        this.set_channelsToNotify(new ArrayList<>(this.get_userList().keySet()));
         this.get_channelsToNotify().remove(sc);
     }
 
