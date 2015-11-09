@@ -79,8 +79,8 @@ public class Chat {
 
     public void messageForUsers(SocketChannel sc, String message)
     {
-        this.set_notifyMessage(this._user.get(sc) + ": " + message);
-        this.set_channelsToNotify(new ArrayList<>(this._user.keySet()));
+        this.set_notifyMessage(this._userlist.get(sc) + ": " + message);
+        this.set_channelsToNotify(new ArrayList<>(this._userlist.keySet()));
         this.get_channelsToNotify().remove(sc);
     }
 
