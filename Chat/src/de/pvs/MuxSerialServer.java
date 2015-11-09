@@ -77,10 +77,12 @@ public class MuxSerialServer {
             } catch (Exception e) {
 
             }
-            Object object = chat.processMessage(talkChan, s);
-            for(SocketChannel s : object.channels)
+
+            chat.processMessage(talkChan, s);
+
+            for(SocketChannel sC: chat.get_channelsTonotify())
             {
-                ChannelRW.sendTextMessage(s, object.nachricht);
+                ChannelRW.sendTextMessage(sC, chat.get_notifyMessage());
             }
 
 

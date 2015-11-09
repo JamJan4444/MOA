@@ -1,6 +1,7 @@
 package de.pvs;
 
 import java.nio.channels.SocketChannel;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -8,7 +9,27 @@ import java.util.HashMap;
  */
 public class Chat {
 
+    ArrayList<SocketChannel> _channelsTonotify;
+    String _notifyMessage;
     HashMap<?,?> benutzerliste;
+
+    //<editor-fold desc="Getter Setter">
+    public ArrayList<SocketChannel> get_channelsTonotify() {
+        return _channelsTonotify;
+    }
+
+    public void set_channelsTonotify(ArrayList<SocketChannel> _channelsTonotify) {
+        this._channelsTonotify = _channelsTonotify;
+    }
+
+    public String get_notifyMessage() {
+        return _notifyMessage;
+    }
+
+    public void set_notifyMessage(String _notifyMessage) {
+        this._notifyMessage = _notifyMessage;
+    }
+    //</editor-fold>
 
     public Chat()
     {
@@ -25,9 +46,8 @@ public class Chat {
         // TODO logout + remove user
     }
 
-    public Object processMessage(SocketChannel sc, String message)
+    public void processMessage(SocketChannel sc, String message)
     {
 
-        return null;
     }
 }
