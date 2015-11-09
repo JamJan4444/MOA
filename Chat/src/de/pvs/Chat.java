@@ -1,17 +1,18 @@
 package de.pvs;
 
+import java.net.Socket;
 import java.nio.channels.Channel;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Andrej on 09.11.2015.
  */
 public class Chat {
 
-
-    HashMap<Channel,String> _user = null;
+    HashMap<SocketChannel, String> _user = null;
     ArrayList<SocketChannel> _channelsToNotify;
     String _notifyMessage;
 
@@ -33,23 +34,53 @@ public class Chat {
     }
     //</editor-fold>
 
-    public Chat()
-    {
-        _user = new HashMap<Channel,String>();
+    public Chat() {
+        _user = new HashMap<SocketChannel, String>();
     }
 
-    public void login(Channel c, String name)
-    {
-        _user.put(c,name);
+    public void login(Channel c, String name) {
+        _user.put(c, name);
     }
 
-    public void logout()
-    {
+    public void logout() {
         // TODO logout + remove user
     }
 
-    public void processMessage(SocketChannel sc, String message)
+    public void messageForUsers(SocketChannel sc, String message)
     {
+        this.set_notifyMessage(this._user.get(sc) + ": " + message);
+        this.set_channelsToNotify(new ArrayList<>(this._user.keySet()));
+        this.get_channelsToNotify().remove(sc);
+    }
 
+    public void processMessage(SocketChannel sc, String message) {
+
+        // client command
+        if (message.substring(0, 1).equals("/")) {
+            String[] pattern = message.split(" ");
+            String command = pattern[0];
+            String paramter = "";
+            for (int i = 1; i < pattern.length; i++) {
+                paramter += pattern[i];
+            }
+
+            switch (command) {
+                case "/login":
+                    this.login(sc, paramter);
+                    break;
+                case "/logout":
+                    this.logout(sc);
+                    break;
+                case "/userlist":
+                    this.getUserList(sc);
+                    break;
+                default:
+                    // TODO error message CommandNotFound
+            }
+        }
+        else //client message
+        {
+            this.messageForUsers(sc, message);
+        }
     }
 }
