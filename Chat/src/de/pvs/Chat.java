@@ -9,17 +9,17 @@ import java.util.HashMap;
  */
 public class Chat {
 
-    ArrayList<SocketChannel> _channelsTonotify;
+    ArrayList<SocketChannel> _channelsToNotify;
     String _notifyMessage;
     HashMap<?,?> benutzerliste;
 
     //<editor-fold desc="Getter Setter">
     public ArrayList<SocketChannel> get_channelsTonotify() {
-        return _channelsTonotify;
+        return _channelsToNotify;
     }
 
-    public void set_channelsTonotify(ArrayList<SocketChannel> _channelsTonotify) {
-        this._channelsTonotify = _channelsTonotify;
+    public void set_channelsTonotify(ArrayList<SocketChannel> _channelsToNotify) {
+        this._channelsToNotify = _channelsToNotify;
     }
 
     public String get_notifyMessage() {
