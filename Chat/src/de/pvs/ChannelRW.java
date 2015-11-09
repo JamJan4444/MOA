@@ -1,4 +1,4 @@
-package de.andrej.pvs;
+package de.pvs;
 
 import java.io.*;
 import java.nio.channels.*;

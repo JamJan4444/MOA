@@ -1,4 +1,4 @@
-package de.andrej.pvs;
+package de.pvs;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -9,6 +9,7 @@ public class MuxSerialServer {
 
     Selector events = null;
     ServerSocketChannel listenChannel;
+    Chat chat;
 
     public static void main(String[] args) {
         // create and start server
@@ -76,8 +77,13 @@ public class MuxSerialServer {
             } catch (Exception e) {
 
             }
+            Object object = chat.processMessage(talkChan, s);
+            for(SocketChannel s : object.channels)
+            {
+                ChannelRW.sendTextMessage(s, object.nachricht);
+            }
 
-            ChannelRW.sendTextMessage(talkChan, s.toUpperCase());
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
             try {
