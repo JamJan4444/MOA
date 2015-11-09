@@ -80,7 +80,7 @@ public class MuxSerialServer {
 
             chat.processMessage(talkChan, s);
 
-            for(SocketChannel sC: chat.get_channelsTonotify())
+            for(SocketChannel sC: chat.get_channelsToNotify())
             {
                 ChannelRW.sendTextMessage(sC, chat.get_notifyMessage());
             }

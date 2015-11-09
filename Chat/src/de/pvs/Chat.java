@@ -14,11 +14,11 @@ public class Chat {
     HashMap<?,?> benutzerliste;
 
     //<editor-fold desc="Getter Setter">
-    public ArrayList<SocketChannel> get_channelsTonotify() {
+    public ArrayList<SocketChannel> get_channelsToNotify() {
         return _channelsToNotify;
     }
 
-    public void set_channelsTonotify(ArrayList<SocketChannel> _channelsToNotify) {
+    public void set_channelsToNotify(ArrayList<SocketChannel> _channelsToNotify) {
         this._channelsToNotify = _channelsToNotify;
     }
 
