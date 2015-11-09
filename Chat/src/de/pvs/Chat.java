@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class Chat {
 
-    HashMap<SocketChannel, String> _user = null;
+    HashMap<SocketChannel,String> _userlist = null;
     ArrayList<SocketChannel> _channelsToNotify;
     String _notifyMessage;
 
@@ -34,16 +34,47 @@ public class Chat {
     }
     //</editor-fold>
 
-    public Chat() {
-        _user = new HashMap<SocketChannel, String>();
+    public Chat()
+    {
+        _userlist = new HashMap<SocketChannel,String>();
     }
 
-    public void login(Channel c, String name) {
-        _user.put(c, name);
+    public void login(SocketChannel c, String name)
+    {
+        _userlist.put(c,name);
+        
+        ArrayList<SocketChannel> list = new ArrayList<SocketChannel>(_userlist.keySet());
+        list.remove(c);
+        
+        this.set_notifyMessage("/userjoined " + name);
+        this.set_channelsToNotify(list);
     }
 
-    public void logout() {
-        // TODO logout + remove user
+    public void logout(Channel c)
+    {
+    	String name = _userlist.get(c);
+        _userlist.remove(c);
+        
+        ArrayList<SocketChannel> list = new ArrayList<SocketChannel>(_userlist.keySet());
+        
+        this.set_notifyMessage("/userleft " + name);
+        this.set_channelsToNotify(list);
+    }
+    
+    public void getUserList(SocketChannel c){
+    	StringBuilder sb = new StringBuilder();
+    	
+    	//Build User List
+    	sb.append("/userlist ");
+    	for(Map.Entry<SocketChannel, String> entry :_userlist.entrySet()){
+    		sb.append(entry.getValue() + " | ");
+    	}
+    	
+    	ArrayList<SocketChannel> sc = new ArrayList<SocketChannel>();
+    	sc.add(c);
+    	
+    	this.set_notifyMessage(sb.toString());
+    	this.set_channelsToNotify(sc);
     }
 
     public void messageForUsers(SocketChannel sc, String message)
